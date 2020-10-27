@@ -77,7 +77,8 @@ void func() {
     HRESULT* errors = nullptr;
     std::vector<wchar_t> path;
 
-    std::vector<wchar_t> item{ 'i', 't', 'e', 'm', 0 };
+    //std::vector<wchar_t> item{ 'i', 't', 'e', 'm', 0 };
+    std::vector<wchar_t> item{ 't','e','s','t','a','p','p','l','i','c','a','t','i','o','n','.','0', '.', 'm', 'o', 'v', '1', '1', 'o','.','v', 'a', 'l', 'u', 'e', 0 };
     OPCITEMDEF item_array[1] =
     { {
         /*szAccessPath*/        path.data(),
