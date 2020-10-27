@@ -15,9 +15,37 @@
 #include <vector>
 #include <thread>
 
+#include <comutil.h>
+
 //extern const GUID IID_IOPCServer;
 const GUID IID_IOPCServer = { 0x39c13a4d,0x011e,0x11d0,{0x96,0x75,0x00,0x20,0xaf,0xd8,0xad,0xb3} };
 const GUID IID_IOPCItemMgt = { 0x39c13a54,0x011e,0x11d0,{0x96,0x75,0x00,0x20,0xaf,0xd8,0xad,0xb3} };
+
+void ReadItem(IUnknown* pGroupIUnknown, OPCHANDLE hServerItem, VARIANT& varValue)
+{
+  // value of the item:
+  OPCITEMSTATE* pValue = NULL;
+  //get a pointer to the IOPCSyncIOInterface:
+  CComPtr<IOPCSyncIO> pIOPCSyncIO;
+  pGroupIUnknown->QueryInterface(__uuidof(pIOPCSyncIO), (void**)&pIOPCSyncIO);
+
+  // read the item value from cache:
+  HRESULT* pErrors = NULL; //to store error code(s)
+  HRESULT hr = pIOPCSyncIO->Read(OPC_DS_DEVICE, 1, &hServerItem, &pValue, &pErrors);
+  _ASSERT(!hr);
+  _ASSERT(pValue != NULL);
+
+  varValue = pValue[0].vDataValue;
+
+  //Release memeory allocated by the OPC server:
+  CoTaskMemFree(pErrors);
+  pErrors = NULL;
+
+  CoTaskMemFree(pValue);
+  pValue = NULL;
+
+}
+
 
 void func() {
   CoInitialize(nullptr);
