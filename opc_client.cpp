@@ -91,7 +91,7 @@ void func() {
         /*wReserved*/           0
         } };
     auto hr = item_mgt->AddItems(1, item_array, &results, &errors);
-    //assert(hr == S_OK);
+    assert(hr == S_OK);
     item_handle = results->hServer;
 
     CoTaskMemFree(results->pBlob);
