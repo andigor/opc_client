@@ -110,66 +110,7 @@ void func() {
 
 int main()
 {
-  std::thread thr1([] {
-    for (size_t i = 0; i < 100; ++i) {
-      func();
-    }
-    });
-
-  std::thread thr2([] {
-    for (size_t i = 0; i < 100; ++i) {
-      func();
-    }
-    });
-
-  std::thread thr3([] {
-    for (size_t i = 0; i < 100; ++i) {
-      func();
-    }
-    });
-  std::thread thr4([] {
-    for (size_t i = 0; i < 100; ++i) {
-      func();
-    }
-    });
-  std::thread thr5([] {
-    for (size_t i = 0; i < 100; ++i) {
-      func();
-    }
-    });
-
-  std::thread thr6([] {
-    for (size_t i = 0; i < 100; ++i) {
-      func();
-    }
-    });
-
-  std::thread thr7([] {
-    for (size_t i = 0; i < 100; ++i) {
-      func();
-    }
-    });
-  std::thread thr8([] {
-    for (size_t i = 0; i < 100; ++i) {
-      func();
-    }
-    });
-  thr1.join();
-  std::cout << "after thr1" << std::endl;
-  thr2.join();
-  std::cout << "after thr2" << std::endl;
-  thr3.join();
-  std::cout << "after thr3" << std::endl;
-  thr4.join();
-  std::cout << "after thr4" << std::endl;
-  thr5.join();
-  std::cout << "after thr5" << std::endl;
-  thr6.join();
-  std::cout << "after thr6" << std::endl;
-  thr7.join();
-  std::cout << "after thr7" << std::endl;
-  thr8.join();
-  std::cout << "after thr8" << std::endl;
+  func();
   return 0;
 }
 
