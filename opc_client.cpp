@@ -101,6 +101,11 @@ void func() {
   }
   //CoUninitialize();
 
+  _variant_t val;
+  ReadItem(item_mgt, item_handle, val);
+
+  
+  std::cout << "val: " << static_cast<double>(val) << std::endl;
 }
 
 int main()
